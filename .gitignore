@@ -1,0 +1,16 @@
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.pyc
+.omc/
+.env
+.env.*
+*.log
+.DS_Store
+Thumbs.db
+teardown-out/
+.playwright/
+backups/인쇄-1029-1608/인쇄용_2권_주방도구편.pdf
+backups/인쇄-1030-0902/인쇄용_2권_주방도구편.pdf
+인쇄/인쇄용_2권_주방도구편.pdf

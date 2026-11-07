@@ -1,0 +1,4 @@
+- [신도 카탈로그 프로젝트](sindo-catalog-project.md) — Volume 7 카탈로그: 목표, 분류 개념(용도→브랜드→시리즈), Canva 디자인 ID
+- [사용자: 신도 직원](user-sindo-staff.md) — Canva로 직접 디자인, 비개발자, 한국어로 짧게 지시
+- [진행 상황을 보이게](feedback-visible-progress.md) — 말없이 턴을 끝내지 말 것, 결과부터 보내고 긴 검증은 백그라운드로
+- [한국어로만 답하기](feedback-korean-only.md) — 사용자는 영어를 못 읽음, 답·표·캡션 전부 한국어

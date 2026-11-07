@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SINDO 제품 카탈로그</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap">
+<link rel="stylesheet" href="editor_assets/catalog.css">
+<link rel="stylesheet" href="editor_assets/viewer.css">
+</head>
+<body class="vb final">
+<header class="vb-top" id="top">
+  <div class="vb-brand"><b>SINDO</b><span>제품 카탈로그</span></div>
+  <div class="vb-search">
+    <input id="q" type="search" placeholder="품번·제품명 검색" autocomplete="off" spellcheck="false" aria-label="품번·제품명 검색">
+    <div class="vb-results" id="results" role="listbox" hidden></div>
+  </div>
+  <nav class="vb-tools" aria-label="쪽 넘기기와 확대">
+    <button type="button" class="vb-btn" data-act="toc" id="tocBtn">목차</button>
+    <button type="button" class="vb-btn vb-mid" data-act="first">« 처음</button>
+    <button type="button" class="vb-btn" data-act="prev">‹ 이전</button>
+    <span class="vb-pno">
+      <button type="button" class="vb-btn vb-pno-btn" id="pnoBtn" title="눌러서 쪽 번호로 이동">1 / 1</button>
+      <input type="number" id="pnoInput" class="vb-pno-input" min="1" inputmode="numeric" aria-label="이동할 쪽 번호" hidden>
+    </span>
+    <button type="button" class="vb-btn" data-act="next">다음 ›</button>
+    <button type="button" class="vb-btn vb-mid" data-act="last">끝 »</button>
+    <button type="button" class="vb-btn vb-wide" data-act="zout">− 축소</button>
+    <button type="button" class="vb-btn vb-wide" data-act="zin">+ 확대</button>
+    <button type="button" class="vb-btn vb-wide" data-act="fit">맞춤</button>
+    <button type="button" class="vb-btn vb-wide" data-act="full" id="fsBtn">전체화면</button>
+  </nav>
+</header>
+<main class="vb-stage" id="stage">
+  <div class="vb-zoom" id="zoomer"><div id="book"></div></div>
+  <div class="vb-shield" id="shield" hidden></div>
+  <div class="vb-loading" id="loading">카탈로그를 여는 중…</div>
+</main>
+<footer class="vb-bottom">
+  <input type="range" id="slider" min="1" max="1" value="1" aria-label="쪽 이동">
+  <span id="sliderLabel" class="vb-slider-label"></span>
+</footer>
+<script src="editor_assets/vendor/page-flip.browser.js"></script>
+<script src="editor_assets/render.js"></script>
+<script src="catalog.js"></script>
+<script src="editor_assets/viewer.js"></script>
+</body>
+</html>

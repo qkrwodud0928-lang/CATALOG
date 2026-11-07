@@ -1,0 +1,151 @@
+
+:root{--navy:#1f3c88;--wine:#8c1d2f;--ink:#1a1a1a;--gray:#777;--line:#d5d8de;--red:#d0342c;--amber:#b8741a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Noto Sans KR","Pretendard","Malgun Gothic","맑은 고딕",sans-serif;color:var(--ink);
+ background:#e9ebf0;font-size:8.5pt;line-height:1.3}
+.page{width:210mm;height:297mm;margin:6mm auto;padding:8mm 12mm 6mm;background:#fff;box-shadow:0 1px 6px #0003;
+ position:relative;overflow:hidden;--c:var(--navy)}
+.ph{height:24mm;position:relative}
+.crumb{height:5mm;line-height:5mm;font-size:7.5pt;color:var(--gray)}.crumb span{margin-left:1mm;font-size:7pt}
+.ttl{height:12mm;line-height:12mm;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-right:60mm}
+.ttl b{font-size:19pt}.ttl span{font-size:10pt;color:#444;margin-left:2.5mm}
+.ph::after{content:"";position:absolute;left:0;right:0;top:18mm;height:1.6mm;background:var(--c)}
+.right{position:absolute;right:0;top:2mm;height:14mm;display:flex;align-items:center;gap:3mm;font-size:12pt}
+.right .logo{max-height:13mm;max-width:45mm}.right .flag{height:9mm;border:1px solid var(--line)}
+.chip{border:1px solid var(--line);border-radius:1mm;padding:.8mm 2.5mm;font-size:8pt;color:#444}
+.body{height:251mm;overflow:hidden}
+.pf{height:8mm;display:flex;justify-content:space-between;align-items:flex-end;font-size:7.5pt;color:var(--gray)}
+.pf b{font-size:11pt;color:var(--ink);line-height:1}
+.tab{position:absolute;right:0;width:6mm;height:24mm;background:var(--c);color:#fff;font-size:7pt;
+ writing-mode:vertical-rl;text-align:center;line-height:6mm;border-radius:1.5mm 0 0 1.5mm;overflow:hidden}
+.band1{height:9mm;margin-bottom:3mm;background:var(--c);color:#fff;font-size:11pt;font-weight:700;line-height:9mm;
+ padding:0 3mm;display:flex;justify-content:space-between;overflow:hidden}
+.band1 small{font-weight:400;font-size:8pt;opacity:.85}
+.band2{height:6mm;margin-bottom:2mm;border-left:1.2mm solid var(--c);padding-left:2mm;font-size:9.5pt;
+ font-weight:700;line-height:6mm;color:var(--c);background:#f3f5f9;overflow:hidden}
+h4 b{color:var(--c)}
+.pic img{width:100%;height:100%;object-fit:contain;display:block}
+.noimg{height:100%;border:1px dashed #c5c8cf;color:#a5a9b3;font-size:6.5pt;display:flex;align-items:center;
+ justify-content:center;text-align:center}
+.kv{display:flex;gap:2mm;white-space:nowrap;overflow:hidden}
+.kv span{overflow:hidden;text-overflow:ellipsis;color:#333}
+.cert{display:flex;gap:1mm;overflow:hidden}
+.cert i{font-style:normal;font-size:6.5pt;font-weight:700;border:1px solid #555;border-radius:.8mm;padding:0 1.2mm;
+ line-height:3.6mm;height:4mm;white-space:nowrap}
+.t{display:grid;grid-auto-rows:6mm;font-size:8pt}
+.t>*{height:6mm;line-height:6mm;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+ border-bottom:1px solid var(--line);padding:0 .8mm}
+.t>b{border-bottom-color:#222}.t .code{font-weight:700}
+.t .long,.g .model .long{font-size:6.5pt;letter-spacing:-.02em}
+.sw{display:inline-block;width:3mm;height:3mm;border:1px solid #888;margin:0 .3mm;vertical-align:middle}
+small{font-weight:400;color:#aaa;font-size:6.5pt}
+/* 1단 카드 (칼) */
+.w{padding:2mm 0;border-bottom:1px solid var(--line);overflow:hidden}/* 높이 = 글·표 + 4.5mm */
+.w h4{height:8mm;line-height:8mm;margin-bottom:1mm;font-size:11pt;border-bottom:1px solid #222;display:flex;gap:4mm;
+ justify-content:space-between;white-space:nowrap;overflow:hidden}
+.w h4 span{flex:none;max-width:120mm;overflow:hidden;text-overflow:ellipsis}
+.w h4 small{overflow:hidden;text-overflow:ellipsis}
+.w .cols{display:flex;gap:4mm}
+.w .specs{flex:0 0 60mm;width:60mm;padding-top:1mm}
+.w .kv{height:auto;min-height:5.5mm;line-height:5.5mm;align-items:flex-start}.w .kv b{flex:0 0 17mm}.w .kv span{white-space:normal;line-height:3.6mm;padding:.95mm 0;word-break:keep-all;overflow-wrap:anywhere}/* 긴 값(재질 등)은 두 줄로 — 한 줄일 때 높이·위치는 전과 같음 */
+.w .cert{height:6mm;align-items:center}
+.w .main{flex:1;min-width:0}
+.w .pic{height:30mm;padding:1mm 0;margin-bottom:1mm}/* 2026-10-22 누끼 사진으로 바꾸며 25→30mm */
+.w .pic img{width:var(--kw,100%);margin:0 auto}/* 칼 길이에 맞춘 사진 폭 (knife_scale.py가 칸에 --kw 를 닮) */
+.two{display:flex;gap:4mm}.two .t{flex:1;min-width:0}
+/* 2단 카드 */
+.grow{display:flex;gap:6mm;overflow:hidden}
+.g{flex:0 0 90mm;width:90mm;border-top:1px solid #222;overflow:hidden}
+.g .top{height:6mm;line-height:6mm;display:flex;justify-content:space-between;font-size:8.5pt}
+.badge{color:var(--amber);font-weight:700}
+.g .cols{display:flex;gap:3mm}
+.g .pic{flex:0 0 36mm;width:36mm;height:36mm}
+.g .txt{flex:1;min-width:0}
+.g h4{height:10mm;line-height:5mm;font-size:9pt;overflow:hidden}
+.g .model{height:6mm;line-height:6mm;border-top:1px solid var(--line);white-space:nowrap;overflow:hidden;
+ text-overflow:ellipsis}
+.g .model i{font-style:normal;color:var(--red);margin-right:2mm}.g .model b{font-size:9pt}
+.g .kv{height:auto;min-height:5mm;line-height:5mm;font-size:7.5pt;align-items:flex-start}.g .kv b{flex:0 0 11mm;font-weight:400;color:var(--gray)}.g .kv span{white-space:normal;line-height:3.4mm;padding:.8mm 0;word-break:keep-all;overflow-wrap:anywhere}/* 긴 값은 두 줄로 — 한 줄 높이는 전과 같음 */
+.g .cert{height:5mm;align-items:center}
+.g .txt small{display:block;height:4mm;line-height:4mm;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.g .t{margin-top:1mm}
+/* 기타 나이프 표: 열 제목 6mm, 브랜드 줄 6mm, 품목 줄 5mm */
+.mh,.mr{display:grid;grid-template-columns:1fr 34mm 24mm 36mm;font-size:8pt}
+.mh{height:7mm;line-height:7mm;font-weight:700;border-bottom:1px solid #222}
+.mh b,.mr span{padding:0 1.5mm;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mb{height:7mm;line-height:6.5mm;padding-left:2mm;font-weight:700;color:var(--c);background:#f3f5f9;overflow:hidden}
+.mb small{margin-left:2mm;color:var(--gray)}
+.mr span{height:6mm;line-height:6mm;border-bottom:1px solid var(--line)}
+.mr .code{font-weight:700}
+/* 브랜드 스토리 칸: full = 한 쪽 전체(251mm), half = 위쪽 100mm */
+.story{overflow:hidden;padding-bottom:6mm}
+.s-pic img{width:100%;height:100%;object-fit:cover;display:block}
+.story h3{height:12mm;line-height:12mm;font-size:20pt;color:var(--c);white-space:nowrap;overflow:hidden}
+.story h3 small{font-size:9pt;color:var(--gray);margin-left:3mm}
+.s-tag{height:7mm;line-height:7mm;margin-bottom:4mm;font-size:11pt;font-weight:700;border-bottom:1px solid #222;
+ white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.s-tag.empty{color:#b5b8c0;font-weight:400}
+.s-body{font-size:9.5pt;line-height:1.75;overflow:hidden;text-align:justify}
+.s-body p{margin-bottom:2.5mm}
+.s-series{height:16mm;margin-top:4mm;padding-top:2mm;border-top:1px solid var(--line);overflow:hidden;line-height:6mm}
+.s-series i{font-style:normal;font-weight:700;color:var(--c);margin-right:3mm}
+.s-series a{color:inherit;text-decoration:none;margin-right:4mm;white-space:nowrap}
+.s-series b{font-weight:400;color:var(--gray);margin-left:1mm;font-size:7.5pt}
+.full .s-pic{height:100mm;margin-bottom:6mm}
+.full .s-body{height:96mm;columns:2;column-gap:8mm}
+.full .s-body.empty{columns:auto}
+.half{display:flex;gap:6mm}
+.half .s-pic{flex:0 0 70mm;width:70mm;height:90mm}
+.half .s-txt{flex:1;min-width:0}
+.half .s-body{height:66mm}
+/* 목차 */
+.toc{display:flex;gap:7mm;height:100%}.tcol{flex:1;min-width:0}
+.toc a{display:flex;justify-content:space-between;gap:2mm;color:inherit;text-decoration:none;white-space:nowrap;
+ overflow:hidden}
+.toc a span{overflow:hidden;text-overflow:ellipsis}
+.toc .ch{height:8mm;line-height:8mm;margin-top:3mm;font-size:10pt;font-weight:700;color:var(--c);
+ border-bottom:.5mm solid var(--c)}
+.toc .ch em{font-style:normal;font-weight:400;font-size:6.5pt;margin-left:.5mm}
+.ttl .logo{max-height:11mm;max-width:70mm;vertical-align:middle}
+.toc .it{height:5.5mm;line-height:5.5mm;border-bottom:1px dotted var(--line)}.toc .it b{font-weight:400;color:var(--gray)}
+/* 표지 · 앞 페이지 */
+.full{padding:0}.full img{width:100%;height:100%;object-fit:cover;display:block}
+.cover{padding:0}
+.cover>*{position:absolute}
+.c-photo{inset:0 0 110mm 0;background:#eef0f3}.c-photo img{width:100%;height:100%;object-fit:cover}
+.c-gray{left:10mm;top:0;width:75mm;height:112mm;background:#4a4f57e0}
+.c-logo{right:14mm;top:16mm;text-align:right;color:var(--navy)}
+.c-logo b{display:block;font-size:30pt;letter-spacing:.12em;line-height:1}
+.c-logo small{font-size:9pt;color:var(--navy);font-weight:700}
+.c-wine{left:10mm;top:112mm;width:75mm;height:92mm;background:var(--wine);color:#fff;padding:36mm 8mm 0;text-align:center}
+.c-wine p{font-size:19pt;line-height:1.35}
+.c-wine small{position:absolute;left:3mm;bottom:3mm;color:#fff;font-size:8.5pt}.c-wine small b{font-size:12pt}
+.c-contact{right:14mm;bottom:18mm;width:88mm;font-size:8pt}
+.c-contact h5{font-size:10pt;border-bottom:1px solid #222;border-right:1px solid #222;padding-bottom:1.5mm;margin-bottom:2.5mm}
+.c-contact h5 span{margin-left:4mm}
+.c-contact p{position:relative;padding-left:20mm;margin-bottom:1.5mm}
+.c-contact p b{position:absolute;left:0;font-size:9pt}
+.c-url{left:10mm;bottom:0;width:75mm;height:22mm;background:var(--navy);color:#fff;font-size:14pt;text-align:center;
+ line-height:22mm}
+.page.even .tab{right:auto;left:0;border-radius:0 1.5mm 1.5mm 0}
+.page.even .pf{flex-direction:row-reverse}
+@page{size:A4;margin:0}
+@media print{
+ body{background:#fff;zoom:1!important}
+ .page{margin:0;box-shadow:none;break-after:page}
+}
+
+/* ── 편집기·책 보기 공용 ── */
+.page{margin:0;box-shadow:none}
+.page a[data-ref]{cursor:pointer}
+.page a[data-ref].broken b{color:var(--red)}
+.ov-layer{position:absolute;inset:0;pointer-events:none;z-index:5}
+.ov{position:absolute;pointer-events:auto;box-sizing:border-box}
+.ov-text{line-height:1.45;white-space:pre-wrap;overflow-wrap:anywhere;color:var(--ink)}
+.ov-image img{width:100%;height:100%;object-fit:contain;display:block}
+.page.full .pic,.page.full .full-slot{position:absolute;inset:0}
+.page.full .full-slot img{width:100%;height:100%;object-fit:cover;display:block}
+/* 완성본(책 보기·PDF): 참고용 원본 상품명과 빈 스펙 줄은 숨긴다 */
+.final .w h4 small,.final .g .txt small{visibility:hidden}
+.final .kv:has(> span:empty){display:none}
+.final .noimg{border-color:#e3e5ea;color:transparent}

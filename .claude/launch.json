@@ -1,0 +1,55 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "catalog",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8765",
+        "--bind",
+        "127.0.0.1"
+      ],
+      "port": 8765
+    },
+    {
+      "name": "editor-test",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        "editor_server.py",
+        "--port",
+        "8811",
+        "--no-pdf-open",
+        "--doc",
+        "C:/Users/박재영/AppData/Local/Temp/claude/C--Users-----CATALOG/e8ce6fd4-1919-4e69-90e1-ff72d33cef67/scratchpad/live_test/catalog.json"
+      ],
+      "port": 8811
+    },
+    {
+      "name": "viewer-test",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8812",
+        "--bind",
+        "127.0.0.1",
+        "--directory",
+        "C:/Users/박재영/AppData/Local/Temp/claude/C--Users-----CATALOG/e8ce6fd4-1919-4e69-90e1-ff72d33cef67/scratchpad/verify/site"
+      ],
+      "port": 8812
+    },
+    {
+      "name": "editor-real",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        "editor_server.py",
+        "--port",
+        "8814",
+        "--no-pdf-open"
+      ],
+      "port": 8814
+    }
+  ]
+}

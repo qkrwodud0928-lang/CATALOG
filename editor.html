@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SINDO 카탈로그 편집기</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap">
+<link rel="stylesheet" href="editor_assets/catalog.css">
+<link rel="stylesheet" href="editor_assets/editor.css">
+</head>
+<body class="ed">
+<header class="ed-top">
+  <div class="ed-brand"><b>SINDO</b><span>카탈로그 편집기</span></div>
+  <span class="ed-status" id="status">불러오는 중…</span>
+  <div class="ed-tools">
+    <button type="button" class="ed-btn" id="undoBtn" title="Ctrl+Z" disabled>↶ 되돌리기</button>
+    <button type="button" class="ed-btn" id="redoBtn" title="Ctrl+Y" disabled>↷ 다시 하기</button>
+    <label class="ed-zoom">보기 크기
+      <select id="zoomSel">
+        <option value="fit">맞춤</option>
+        <option value="0.5">50%</option>
+        <option value="0.75">75%</option>
+        <option value="1">100%</option>
+        <option value="1.25">125%</option>
+      </select>
+    </label>
+    <label class="ed-btn ed-check"><input type="checkbox" id="finalChk"> 완성본처럼 보기</label>
+    <button type="button" class="ed-btn" id="bookBtn">책으로 보기</button>
+    <button type="button" class="ed-btn" id="pdfBtn">PDF 만들기</button>
+    <button type="button" class="ed-btn" id="exportBtn">홈페이지용 내보내기</button>
+    <button type="button" class="ed-btn" id="pubBtn">홈페이지에 올리기</button>
+    <button type="button" class="ed-btn ed-help-btn" id="helpBtn">도움말</button>
+  </div>
+</header>
+
+<div class="ed-main">
+  <aside class="ed-side" id="side">
+    <div class="ed-side-head">
+      <b>쪽 목록</b>
+      <button type="button" class="ed-btn ed-mini" id="sideBtn" title="목록 접기">◀ 접기</button>
+    </div>
+    <input type="search" id="findInput" class="ed-find" placeholder="쪽 찾기 (제목·글자)" autocomplete="off" spellcheck="false">
+    <ol class="ed-list" id="list"></ol>
+  </aside>
+  <button type="button" class="ed-btn ed-side-open" id="sideOpenBtn" hidden>▶ 쪽 목록</button>
+
+  <main class="ed-stage" id="ed-stage">
+    <div class="ed-sheet" id="sheet">
+      <div class="ed-pages" id="pages" spellcheck="false"></div>
+      <div class="ed-layer" id="toolLayer">
+        <div class="ed-tool ed-card-tool" id="cardTool" hidden>
+          <button type="button" data-tool="cardDup">복제</button>
+          <button type="button" data-tool="cardDel">지우기</button>
+          <button type="button" data-tool="cardNext">다음 쪽으로</button>
+          <button type="button" data-tool="cardPrev">앞 쪽으로</button>
+          <label class="ed-type-pick" id="cardTypeWrap" hidden><select id="cardType" title="칼 색인에 들어갈 칼 종류"></select></label>
+          <label class="ed-prod" title="홈페이지(sindoltd.com) 상품 번호. 책 보기에서 이 제품을 누르면 그 상품 페이지가 열립니다">홈페이지 번호
+            <input type="text" id="cardProd" inputmode="numeric" maxlength="9" autocomplete="off" spellcheck="false" placeholder="없음"></label>
+          <a class="ed-prod-open" id="cardProdOpen" target="_blank" rel="noopener" hidden title="홈페이지 상품 페이지를 새 창으로 열어 확인">열기</a>
+        </div>
+        <div class="ed-tool ed-table-tool" id="tableTool" hidden>
+          <button type="button" data-tool="rowAdd">+ 줄</button>
+        </div>
+        <div class="ed-tool ed-row-tool" id="rowTool" hidden>
+          <button type="button" data-tool="rowDel">줄 지우기</button>
+        </div>
+        <div class="ed-tool ed-slot-tool" id="slotTool" hidden>
+          <button type="button" data-tool="slotChange">바꾸기</button>
+          <button type="button" data-tool="slotClear">빼기</button>
+        </div>
+        <div class="ed-tool ed-ov-tool" id="ovTool" hidden>
+          <span class="ed-ov-text">
+            <button type="button" data-tool="ovSmaller" title="글자 작게">− 글자</button>
+            <span class="ed-ov-size" id="ovSize">12pt</span>
+            <button type="button" data-tool="ovBigger" title="글자 크게">+ 글자</button>
+            <button type="button" data-tool="ovBold" id="ovBold"><b>굵게</b></button>
+            <label class="ed-ov-color" title="글자 색">색 <input type="color" id="ovColor" value="#1a1a1a"></label>
+            <button type="button" data-tool="ovAlign" data-v="left" title="왼쪽 맞춤">왼쪽</button>
+            <button type="button" data-tool="ovAlign" data-v="center" title="가운데 맞춤">가운데</button>
+            <button type="button" data-tool="ovAlign" data-v="right" title="오른쪽 맞춤">오른쪽</button>
+            <button type="button" data-tool="ovBg" data-v="" title="바탕 없음">바탕 없음</button>
+            <button type="button" data-tool="ovBg" data-v="#ffffff" title="흰 바탕">흰 바탕</button>
+          </span>
+          <button type="button" data-tool="ovDel" class="ed-danger">지우기</button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<dialog class="ed-dialog" id="addDlg">
+  <form method="dialog">
+    <h2>어떤 페이지를 넣을까요?</h2>
+    <div class="ed-choices">
+      <button type="button" data-type="blank"><b>빈 페이지</b><span>머리와 쪽 번호만 있는 빈 쪽</span></button>
+      <button type="button" data-type="knife"><b>칼 제품 페이지 (3칸)</b><span>칼 제품 칸 3개</span></button>
+      <button type="button" data-type="grid"><b>2단 제품 페이지 (8칸)</b><span>작은 제품 칸 2줄씩 8개</span></button>
+      <button type="button" data-type="image"><b>그림 한 장 페이지</b><span>Canva에서 만든 쪽 그림(A4 세로 PNG)을 통째로 넣기</span></button>
+      <button type="button" data-type="dup" id="dupChoice"><b>앞 쪽 복제</b><span>바로 앞 쪽을 그대로 한 장 더</span></button>
+    </div>
+    <div class="ed-dialog-foot"><button class="ed-btn" value="cancel">닫기</button></div>
+  </form>
+</dialog>
+
+<dialog class="ed-dialog ed-help" id="helpDlg">
+  <form method="dialog">
+    <h2>편집기 사용법</h2>
+    <ul>
+      <li><b>글자 고치기</b> — 쪽 안의 글자를 누르면 바로 고칠 수 있습니다. 한 줄짜리는 Enter 를 누르면 끝납니다.</li>
+      <li><b>사진 넣기</b> — 사진 칸을 누르거나, 사진 파일을 사진 칸에 끌어다 놓으세요. 사진 위에 마우스를 올리면 [바꾸기] [빼기].</li>
+      <li><b>페이지 추가</b> — 쪽과 쪽 사이의 <b>+ 여기에 페이지 추가</b> 를 누르세요. 쪽 번호·목차 번호는 저절로 다시 매겨집니다.</li>
+      <li><b>쪽 다루기</b> — 쪽 위 막대의 [위로] [아래로] [복제] [지우기].</li>
+      <li><b>제품 칸</b> — 제품 칸에 마우스를 올리면 [복제] [지우기] [다음 쪽으로] [앞 쪽으로]. 표에는 [+ 줄].</li>
+      <li><b>홈페이지 번호</b> — 제품 칸 도구막대의 [홈페이지 번호] 칸에 홈페이지 상품 번호(숫자)를 넣으면, 책 보기에서 그 제품을 누를 때 홈페이지 상품 페이지가 열립니다. [열기]로 맞는지 확인하세요.</li>
+      <li><b>여러 줄 글</b> — 소개 글·글상자에서는 Enter 를 누르면 줄이 바뀝니다. 다 쓰면 바깥을 누르세요.</li>
+      <li><b>홈페이지에 올리기</b> — 위 막대의 [홈페이지에 올리기]. 저장된 카탈로그를 홈페이지에 바로 올립니다. 다 될 때까지 창을 닫지 마세요.</li>
+      <li><b>글상자·자유 사진</b> — 쪽 위 막대의 [+ 글상자] [+ 사진]. 한 번 누르면 선택(끌어서 옮기기, 오른쪽 아래 모서리로 크기), 글상자는 두 번 누르면 글 입력.</li>
+      <li><b>빨간 테두리 ⚠</b> — 내용이 넘쳐서 아래가 잘리는 쪽입니다. 제품 칸을 다음 쪽으로 옮기세요.</li>
+      <li><b>되돌리기</b> — 잘못 고쳤으면 <b>Ctrl+Z</b>(되돌리기), <b>Ctrl+Y</b>(다시 하기).</li>
+      <li><b>저장</b> — 고치면 저절로 저장됩니다(위 막대에 "저장됨" 표시). 바로 저장하려면 <b>Ctrl+S</b>.</li>
+      <li><b>끄기</b> — 다 쓰고 검은 창을 닫으면 편집기가 꺼집니다. 저장이 끝난 뒤에 닫으세요.</li>
+    </ul>
+    <div class="ed-dialog-foot"><button class="ed-btn ed-primary" value="ok">알겠습니다</button></div>
+  </form>
+</dialog>
+
+<dialog class="ed-dialog" id="pubDlg">
+  <form method="dialog">
+    <h2>홈페이지에 올렸습니다</h2>
+    <p class="ed-pub-msg" id="pubMsg"></p>
+    <p class="ed-pub-url" id="pubUrl"></p>
+    <div class="ed-dialog-foot">
+      <a class="ed-btn ed-primary" id="pubOpen" target="_blank" rel="noopener">홈페이지에서 보기 (새 창)</a>
+      <button class="ed-btn" value="ok">닫기</button>
+    </div>
+  </form>
+</dialog>
+
+<div class="ed-busy" id="busy" hidden><div class="ed-busy-box"><i class="ed-spin"></i><span id="busyText">처리하는 중…</span></div></div>
+<div class="ed-toast" id="toast" hidden></div>
+<div class="ed-fatal" id="fatal" hidden></div>
+<input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp,image/gif" hidden>
+
+<script src="editor_assets/render.js"></script>
+<script src="editor_assets/editor.js"></script>
+</body>
+</html>
